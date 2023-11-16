@@ -1,0 +1,18 @@
+{
+  "name": "todolist-pro",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "watch:sass": "sass sass/main.scss css/style.css -w"
+  },
+  "devDependencies": {
+    "vite": "^4.4.5"
+  },
+  "dependencies": {
+    "sass": "^1.69.5"
+  }
+}

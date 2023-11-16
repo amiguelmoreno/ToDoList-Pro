@@ -1,0 +1,7 @@
+1. As user, I want to create tasks (with title, description, due date and category), so I can have it as a remainder
+2. As user, I want to organise the tasks between pending, doing, done so I can focus on what I have to do
+3. As user, I want to drag and drop every task to the state I want
+4. As user, I want to edit a created task and modify any field
+5. As user, I want to drag and drop up or down in the state so I can prioritize the tasks
+6. As user, I want to receive notifications when the due time of the task is arriving
+7. As user, I want to see a more detailed vision of the task when I click on it

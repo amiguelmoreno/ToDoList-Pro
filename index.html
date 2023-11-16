@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TodoList Pro</title>
+    <script defer src="/index.js"></script>
+
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>TodoList Pro ✅</h1>
+    </header>
+    <div class="new-task-section">
+      <button class="new-task-btn">
+        Nueva tarea <span class="plus-sign">+</span>
+      </button>
+    </div>
+
+    <div class="filters-section">
+      <select name="categories" id="categories">
+        <option value="">Categories</option>
+        <option value="">🙋🏻 Personal</option>
+        <option value="">💼 Work</option>
+        <option value="">💰 Expenses</option>
+      </select>
+
+      <select name="priority" id="priority">
+        <option value="">Priority</option>
+        <option value="">🔴 High Pritority</option>
+        <option value="">🟠 Medium Pritority</option>
+        <option value="">🔵 Pritority</option>
+      </select>
+    </div>
+    <div class="tasks-section">
+      <div class="task-container pending">
+        <h2>Pending</h2>
+        <div class="tasks">
+          <div class="task"></div>
+        </div>
+      </div>
+      <div class="task-container doing"><h2>Doing</h2></div>
+      <div class="task-container done"><h2>Done</h2></div>
+    </div>
+  </body>
+</html>
