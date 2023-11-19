@@ -7,6 +7,7 @@
   padding: 0;
   box-sizing: inherit;
   font-family: "Nunito", sans-serif;
+  scroll-behavior: smooth;
 }
 
 html {
@@ -19,13 +20,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 4rem;
 }
 
 header {
+  padding: 4rem;
   align-self: start;
-
   font-size: 1.5rem;
+  margin-bottom: 5rem;
 }
 
 .new-task-section {
@@ -45,8 +46,8 @@ header {
     align-items: center;
     font-weight: 500;
     gap: 1rem;
-    font-size: 1.8rem;
-    padding: 0.5rem 2rem;
+    font-size: 2.5rem;
+    padding: 1rem 6rem;
     border: none;
     color: white;
     background-color: rgb(136, 136, 136);
@@ -64,11 +65,18 @@ header {
 }
 
 .filters-section {
+  padding: 0 5rem;
   width: 100%;
   display: flex;
+  align-items: center;
   justify-content: end;
   margin-top: 4rem;
   gap: 1.5rem;
+
+  .filter-name {
+    font-weight: 500;
+    font-size: 1.7rem;
+  }
 
   select {
     border: none;
@@ -83,23 +91,110 @@ header {
 
 .tasks-section {
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   gap: 2rem;
-  margin-top: 3rem;
+  margin-top: 4rem;
+  padding: 0 4rem;
   width: 100%;
+  max-width: 140rem;
 
-  .task-container {
+  .tasks-container {
+    position: relative;
     display: flex;
-    justify-content: center;
-    padding: 1rem;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem 1rem;
     color: white;
     border-radius: 10px;
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     font-weight: 600;
-    flex-grow: 1;
+    flex: 1;
     background-color: red;
     min-height: 20rem;
+
+    h2 {
+      margin-bottom: 3rem;
+    }
+
+    .tasks-count {
+      position: absolute;
+      right: 0;
+      top: 0;
+      margin: 1rem 2rem;
+      font-weight: 400;
+      font-size: 2.5rem;
+    }
+
+    .tasks {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 1rem;
+
+      .new-task {
+        border: none;
+        font-size: inherit;
+        font-weight: inherit;
+        padding: 1rem;
+        background-color: rgba(255, 255, 255, 0.595);
+        margin-bottom: 2rem;
+        border-radius: 10px;
+
+        transition: all 0.2s;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+
+        &:active {
+          transform: scale(1);
+        }
+      }
+
+      .task {
+        padding: 1rem;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.595);
+        color: black;
+        display: grid;
+        row-gap: 2rem;
+        grid-template-columns: repeat(3, 1fr);
+        //  filter: opacity(0.6) grayscale(80%);
+
+        &_title {
+          padding: 0.4rem;
+          grid-column: span 2;
+        }
+
+        &_check {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          margin-right: 1rem;
+
+          input {
+            transform: scale(2);
+          }
+        }
+
+        .status {
+          grid-column: span 3;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          & > * {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.764);
+            padding: 0.4rem 1rem;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
   }
 
   .pending {
@@ -112,5 +207,85 @@ header {
 
   .done {
     background-color: rgb(131, 232, 124);
+  }
+}
+
+.task-modal {
+  z-index: 10;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(173, 173, 173, 0.623);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .task-form {
+    background-color: white;
+    width: 50%;
+    padding: 3rem;
+    border-radius: 10px;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
+      #title {
+        font-size: 2.5rem;
+        border: none;
+        font-weight: 600;
+        padding: 0.5rem;
+      }
+
+      #description {
+        border: 1px solid rgba(128, 128, 128, 0.567);
+        border-radius: 5px;
+        padding: 0.5rem;
+        font-size: 1.5rem;
+        font-weight: 400;
+      }
+
+      .selectors {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+
+        & > * {
+          font-size: 1.6rem;
+          padding: 1rem;
+          border: 1px solid rgba(128, 128, 128, 0.567);
+          border-radius: 5px;
+        }
+
+        select {
+          height: auto; /* Altura automática basada en el contenido */
+          line-height: 1.5;
+        }
+      }
+
+      .form-btns {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        gap: 2rem;
+        margin-top: 1rem;
+
+        .cancel,
+        #submit {
+          padding: 0.5rem 2rem;
+
+          font-size: 1.6rem;
+          border: 1px solid rgba(128, 128, 128, 0.567);
+          border-radius: 5px;
+        }
+
+        #submit {
+          background-color: gray;
+          color: white;
+        }
+      }
+    }
   }
 }

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;700;800&display=swap");
 *,
 *::before,
@@ -6,6 +7,7 @@
   padding: 0;
   box-sizing: inherit;
   font-family: "Nunito", sans-serif;
+  scroll-behavior: smooth;
 }
 
 html {
@@ -18,12 +20,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 4rem;
 }
 
 header {
+  padding: 4rem;
   align-self: start;
   font-size: 1.5rem;
+  margin-bottom: 5rem;
 }
 
 .new-task-section {
@@ -38,8 +41,8 @@ header {
   align-items: center;
   font-weight: 500;
   gap: 1rem;
-  font-size: 1.8rem;
-  padding: 0.5rem 2rem;
+  font-size: 2.5rem;
+  padding: 1rem 6rem;
   border: none;
   color: white;
   background-color: rgb(136, 136, 136);
@@ -58,11 +61,17 @@ header {
 }
 
 .filters-section {
+  padding: 0 5rem;
   width: 100%;
   display: flex;
+  align-items: center;
   justify-content: end;
   margin-top: 4rem;
   gap: 1.5rem;
+}
+.filters-section .filter-name {
+  font-weight: 500;
+  font-size: 1.7rem;
 }
 .filters-section select {
   border: none;
@@ -76,23 +85,96 @@ header {
 
 .tasks-section {
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   gap: 2rem;
-  margin-top: 3rem;
+  margin-top: 4rem;
+  padding: 0 4rem;
   width: 100%;
+  max-width: 140rem;
 }
-.tasks-section .task-container {
+.tasks-section .tasks-container {
+  position: relative;
   display: flex;
-  justify-content: center;
-  padding: 1rem;
+  align-items: center;
+  flex-direction: column;
+  padding: 2rem 1rem;
   color: white;
   border-radius: 10px;
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   font-weight: 600;
-  flex-grow: 1;
+  flex: 1;
   background-color: red;
   min-height: 20rem;
+}
+.tasks-section .tasks-container h2 {
+  margin-bottom: 3rem;
+}
+.tasks-section .tasks-container .tasks-count {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 1rem 2rem;
+  font-weight: 400;
+  font-size: 2.5rem;
+}
+.tasks-section .tasks-container .tasks {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+}
+.tasks-section .tasks-container .tasks .new-task {
+  border: none;
+  font-size: inherit;
+  font-weight: inherit;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.595);
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  transition: all 0.2s;
+}
+.tasks-section .tasks-container .tasks .new-task:hover {
+  transform: scale(1.05);
+}
+.tasks-section .tasks-container .tasks .new-task:active {
+  transform: scale(1);
+}
+.tasks-section .tasks-container .tasks .task {
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.595);
+  color: black;
+  display: grid;
+  row-gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+.tasks-section .tasks-container .tasks .task_title {
+  padding: 0.4rem;
+  grid-column: span 2;
+}
+.tasks-section .tasks-container .tasks .task_check {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 1rem;
+}
+.tasks-section .tasks-container .tasks .task_check input {
+  transform: scale(2);
+}
+.tasks-section .tasks-container .tasks .task .status {
+  grid-column: span 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.tasks-section .tasks-container .tasks .task .status > * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.764);
+  padding: 0.4rem 1rem;
+  border-radius: 5px;
 }
 .tasks-section .pending {
   background-color: rgb(224, 144, 94);
@@ -102,6 +184,75 @@ header {
 }
 .tasks-section .done {
   background-color: rgb(131, 232, 124);
+}
+
+.task-modal {
+  z-index: 10;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(173, 173, 173, 0.623);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.task-modal .task-form {
+  background-color: white;
+  width: 50%;
+  padding: 3rem;
+  border-radius: 10px;
+}
+.task-modal .task-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.task-modal .task-form form #title {
+  font-size: 2.5rem;
+  border: none;
+  font-weight: 600;
+  padding: 0.5rem;
+}
+.task-modal .task-form form #description {
+  border: 1px solid rgba(128, 128, 128, 0.567);
+  border-radius: 5px;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.task-modal .task-form form .selectors {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.task-modal .task-form form .selectors > * {
+  font-size: 1.6rem;
+  padding: 1rem;
+  border: 1px solid rgba(128, 128, 128, 0.567);
+  border-radius: 5px;
+}
+.task-modal .task-form form .selectors select {
+  height: auto; /* Altura automática basada en el contenido */
+  line-height: 1.5;
+}
+.task-modal .task-form form .form-btns {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+.task-modal .task-form form .form-btns .cancel,
+.task-modal .task-form form .form-btns #submit {
+  padding: 0.5rem 2rem;
+  font-size: 1.6rem;
+  border: 1px solid rgba(128, 128, 128, 0.567);
+  border-radius: 5px;
+}
+.task-modal .task-form form .form-btns #submit {
+  background-color: gray;
+  color: white;
 }
 
 /*# sourceMappingURL=style.css.map */
