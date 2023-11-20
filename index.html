@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TodoList Pro</title>
     <script defer src="/index.js"></script>
-
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
@@ -13,7 +12,7 @@
       <h1>TodoList Pro ✅</h1>
     </header>
     <div class="new-task-section">
-      <button class="new-task-btn">
+      <button id="main-btn" class="new-task-btn new-task">
         New task <span class="plus-sign">+</span>
       </button>
     </div>
@@ -37,17 +36,17 @@
 
       <select name="priority" id="priority">
         <option value="">Priority</option>
-        <option value="">🔴 High Pritority</option>
-        <option value="">🟠 Medium Pritority</option>
-        <option value="">🔵 Low Pritority</option>
+        <option value="">1️⃣ High Pritority</option>
+        <option value="">2️⃣ Medium Pritority</option>
+        <option value="">3️⃣ Low Pritority</option>
       </select>
     </div>
     <div class="tasks-section">
       <div class="tasks-container pending">
         <h2>Pending</h2>
         <div class="tasks-count">8</div>
+        <button class="new-task">New task +</button>
         <div class="tasks">
-          <button class="new-task">New task +</button>
           <div class="task">
             <h3 class="task_title">Llamar a tienda Pc</h3>
             <div class="task_check"><input type="checkbox" /></div>
@@ -59,36 +58,46 @@
           </div>
         </div>
       </div>
-      <div class="tasks-container doing"><h2>Doing</h2></div>
-      <div class="tasks-container done"><h2>Done</h2></div>
+      <div class="tasks-container doing">
+        <h2>Doing</h2>
+        <div class="tasks-count">8</div>
+        <button class="new-task">New task +</button>
+        <div class="tasks"></div>
+      </div>
+      <div class="tasks-container done">
+        <h2>Done</h2>
+        <div class="tasks-count">8</div>
+        <button class="new-task">New task +</button>
+        <div class="tasks"></div>
+      </div>
     </div>
 
-    <div class="task-modal">
+    <div class="task-modal hidden">
       <div class="overlay"></div>
       <div class="task-form">
         <form action="">
-          <input id="title" type="text" placeholder="Title" required />
+          <input id="new-task-title" type="text" placeholder="Title" required />
           <textarea
             name="description"
-            id="description"
+            id="new-task-description"
             cols="30"
             resize
             placeholder="Description"
           ></textarea>
           <div class="selectors">
-            <input id="date" type="date" />
-            <select name="priority" id="priority">
+            <input id="new-task-date" type="date" />
+            <select name="priority" id="new-task-priority">
               <option value="">Priority</option>
               <option value="">1️⃣ High Pritority</option>
               <option value="">2️⃣ Medium Pritority</option>
               <option value="">3️⃣ Low Pritority</option>
             </select>
 
-            <select name="category" id="category">
+            <select name="category" id="new-task-category">
               <option value="">Category</option>
-              <option value="">🙋🏻 Personal</option>
-              <option value="">💼 Work</option>
-              <option value="">💰 Expenses</option>
+              <option value="personal">🙋🏻 Personal</option>
+              <option value="work">💼 Work</option>
+              <option value="expenses">💰 Expenses</option>
             </select>
           </div>
 
