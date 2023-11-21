@@ -111,7 +111,8 @@ header {
     font-weight: 600;
     flex: 1;
     background-color: red;
-    min-height: 20rem;
+
+    transition: all 0.5s;
 
     h2 {
       margin-bottom: 3rem;
@@ -152,9 +153,10 @@ header {
       width: 100%;
       gap: 2rem;
       padding: 1rem;
+      min-height: 10rem;
 
       .task {
-        padding: 1rem;
+        padding: 0.5rem;
         border-radius: 10px;
         background-color: rgba(255, 255, 255, 0.595);
         color: black;
@@ -162,6 +164,11 @@ header {
         row-gap: 1rem;
         grid-template-columns: repeat(3, 1fr);
         grid-auto-rows: 1fr; //  filter: opacity(0.6) grayscale(80%);
+        cursor: grab;
+
+        &:active {
+          cursor: grabbing;
+        }
 
         &_title {
           padding: 0.4rem;
@@ -184,6 +191,7 @@ header {
           display: flex;
           align-items: center;
           justify-content: space-between;
+          padding: 0.2rem;
 
           & > * {
             display: flex;
@@ -191,7 +199,7 @@ header {
             justify-content: center;
             font-size: 1.3rem;
             background-color: rgba(255, 255, 255, 0.764);
-            padding: 0.4rem 1rem;
+            padding: 0.5rem;
             border-radius: 5px;
           }
         }
@@ -295,4 +303,17 @@ header {
 
 .hidden {
   display: none;
+}
+
+// DRAG AND DROP SETTINGS (DRAGULA)
+.gu-mirror {
+  display: none;
+}
+
+.gu-hide {
+  display: none !important;
+}
+
+.gu-transit {
+  opacity: 0.2;
 }

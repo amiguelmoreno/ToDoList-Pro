@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TodoList Pro</title>
+    <!-- Puedes incluirlo desde una CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js"></script>
+
     <script defer src="/index.js"></script>
     <link rel="stylesheet" href="./css/style.css" />
   </head>
@@ -20,7 +23,7 @@
     <div class="filters-section">
       <p class="filter-name">Filter by:</p>
 
-      <select name="priority" id="priority">
+      <select name="date" id="date">
         <option value="">Date</option>
         <option value="">Today</option>
         <option value="">This week</option>
@@ -36,9 +39,9 @@
 
       <select name="priority" id="priority">
         <option value="">Priority</option>
-        <option value="">1️⃣ High Pritority</option>
-        <option value="">2️⃣ Medium Pritority</option>
-        <option value="">3️⃣ Low Pritority</option>
+        <option value="🔴 High Pritority">🔴 High Pritority</option>
+        <option value="🟠 Medium Pritority">🟠 Medium Pritority</option>
+        <option value="🔵 Low Pritority">🔵 Low Pritority</option>
       </select>
     </div>
     <div class="tasks-section">
@@ -49,7 +52,9 @@
         <div class="tasks">
           <div class="task">
             <h3 class="task_title">Llamar a tienda Pc</h3>
-            <div class="task_check"><input type="checkbox" /></div>
+            <div class="task_check">
+              <input type="checkbox" id="checkbox" />
+            </div>
             <div class="status">
               <p class="task_due-date">🗓️ 04/08/21</p>
               <p class="task_categorie">💼 Work</p>
@@ -76,7 +81,13 @@
       <div class="overlay"></div>
       <div class="task-form">
         <form action="">
-          <input id="new-task-title" type="text" placeholder="Title" required />
+          <input
+            id="new-task-title"
+            type="text"
+            maxlength="30"
+            placeholder="Title"
+            required
+          />
           <textarea
             name="description"
             id="new-task-description"
@@ -86,23 +97,24 @@
           ></textarea>
           <div class="selectors">
             <input id="new-task-date" type="date" />
-            <select name="priority" id="new-task-priority">
-              <option value="">Priority</option>
-              <option value="">1️⃣ High Pritority</option>
-              <option value="">2️⃣ Medium Pritority</option>
-              <option value="">3️⃣ Low Pritority</option>
-            </select>
 
             <select name="category" id="new-task-category">
               <option value="">Category</option>
-              <option value="personal">🙋🏻 Personal</option>
-              <option value="work">💼 Work</option>
-              <option value="expenses">💰 Expenses</option>
+              <option value="🙋🏻 Personal">🙋🏻 Personal</option>
+              <option value="💼 Work">💼 Work</option>
+              <option value="💰 Expenses">💰 Expenses</option>
+            </select>
+
+            <select name="priority" id="new-task-priority">
+              <option value="">Priority</option>
+              <option value="🔴 High Pritority">🔴 High Pritority</option>
+              <option value="🟠 Medium Pritority">🟠 Medium Pritority</option>
+              <option value="🔵 Low Pritority">🔵 Low Pritority</option>
             </select>
           </div>
 
           <div class="form-btns">
-            <button class="cancel">Cancel</button>
+            <button class="cancel" type="button">Cancel</button>
             <input type="submit" name="submit" id="submit" />
           </div>
         </form>
